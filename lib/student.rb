@@ -2,6 +2,7 @@ require_relative 'person'
 
 class Student < Person
   attr_accessor :rentals
+
   def initialize(id, age, name, parent_permission, classroom)
     super(id, age, name, parent_permission)
     @classroom = classroom
@@ -13,4 +14,3 @@ class Student < Person
     '¯\(ツ)/¯'
   end
 end
-

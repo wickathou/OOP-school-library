@@ -17,10 +17,10 @@ puts math_class.students.map(&:name)
 
 book1 = Book.new('The Noob', 'John Doe')
 book2 = Book.new('Harry Pot', 'Joker Rowling')
-rental_1 = Rental.new('2020-10-21', book1, student1)
-rental_2 = Rental.new('2020-10-21', book2, student2)
-rental_3 = Rental.new('2020-10-21', book1, student2)
-rental_4 = Rental.new('2020-10-21', book2, student1)
+Rental.new('2020-10-21', book1, student1)
+Rental.new('2020-12-21', book2, student2)
+Rental.new('2020-11-21', book1, student2)
+Rental.new('2020-09-21', book2, student1)
 
-puts book1.rentals.map{|rental| "Book: #{rental.book.title} Date: #{rental.date}, Student: #{rental.person.name}"}
-puts book2.rentals.map{|rental| "Book: #{rental.book.title} Date: #{rental.date}, Student: #{rental.person.name}"}
+book1.rentals.map { |rental| puts "Book: #{rental.book.title} Date: #{rental.date}, Student: #{rental.person.name}" }
+book2.rentals.map { |rental| puts "Book: #{rental.book.title} Date: #{rental.date}, Student: #{rental.person.name}" }
