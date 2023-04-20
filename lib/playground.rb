@@ -22,5 +22,6 @@ Rental.new('2020-12-21', book2, student2)
 Rental.new('2020-11-21', book1, student2)
 Rental.new('2020-09-21', book2, student1)
 
+math_class.students.map { |student| puts "Student #{student.name} in the #{math_class.label} classroom" }
 book1.rentals.map { |rental| puts "Book: #{rental.book.title} Date: #{rental.date}, Student: #{rental.person.name}" }
 book2.rentals.map { |rental| puts "Book: #{rental.book.title} Date: #{rental.date}, Student: #{rental.person.name}" }
