@@ -10,7 +10,7 @@ class Student < Person
       @classroom.students << self
     end
     @rentals = []
-    self.notify
+    notify
   end
 
   def notify
