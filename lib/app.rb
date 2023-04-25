@@ -55,10 +55,7 @@ class App
 
   def create_student
     id = @people.length + 1
-    puts 'Name:'
-    name = gets.chomp
-    puts 'Age:'
-    age = gets.chomp.to_i
+    prompt_arr = input_prompt(["name", "age"])
     puts 'Has parent permission? [Y/N]?'
     permission = gets.chomp
     if permission.match?(/y/i)
@@ -69,19 +66,14 @@ class App
       puts 'That is not a valid input'
       return
     end
-    student = Student.new(id, age, name, parent_permission)
+    student = Student.new(id, prompt_arr[1], prompt_arr[0], parent_permission)
     add_person(student)
   end
 
   def create_teacher
     id = @people.length + 1
-    puts 'Name:'
-    name = gets.chomp
-    puts 'Age:'
-    age = gets.chomp
-    puts 'Specialization:'
-    specialization = gets.chomp
-    teacher = Teacher.new(id, age, name, specialization)
+    prompt_arr = input_prompt(["name", "age", "specialization"])
+    teacher = Teacher.new(id, prompt_arr[1], prompt_arr[0], prompt_arr[2])
     add_person(teacher)
   end
 
@@ -114,6 +106,14 @@ class App
 
   def add_person(person)
     @people << person
+  end
+
+  def input_prompt(arr)
+    for i in 0..arr.length()-1 do 
+      puts("#{arr.at(i)}:" )
+      arr[i] = gets.chomp
+    end
+    return arr
   end
 
   def add_book(book)
