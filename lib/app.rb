@@ -13,15 +13,7 @@ class App
 
   def run
     puts 'Welcome to School Library App!'
-    loop do
-      interface_menu
-      option = gets.chomp
-      if option == '7'
-        puts 'Thank you for using the Library App!'
-        break
-      end
-      option_selector(option)
-    end
+    app_loop
   end
 
   def list_books
@@ -63,10 +55,7 @@ class App
 
   def create_student
     id = @people.length + 1
-    puts 'Name:'
-    name = gets.chomp
-    puts 'Age:'
-    age = gets.chomp.to_i
+    prompt_arr = input_prompt(%w[name age])
     puts 'Has parent permission? [Y/N]?'
     permission = gets.chomp
     if permission.match?(/y/i)
@@ -77,19 +66,14 @@ class App
       puts 'That is not a valid input'
       return
     end
-    student = Student.new(id, age, name, parent_permission)
+    student = Student.new(id, prompt_arr[1], prompt_arr[0], parent_permission)
     add_person(student)
   end
 
   def create_teacher
     id = @people.length + 1
-    puts 'Name:'
-    name = gets.chomp
-    puts 'Age:'
-    age = gets.chomp
-    puts 'Specialization:'
-    specialization = gets.chomp
-    teacher = Teacher.new(id, age, name, specialization)
+    prompt_arr = input_prompt(%w[name age specialization])
+    teacher = Teacher.new(id, prompt_arr[1], prompt_arr[0], prompt_arr[2])
     add_person(teacher)
   end
 
@@ -122,6 +106,14 @@ class App
 
   def add_person(person)
     @people << person
+  end
+
+  def input_prompt(arr)
+    (0..arr.length - 1).each do |i|
+      puts("#{arr.at(i)}:")
+      arr[i] = gets.chomp
+    end
+    arr
   end
 
   def add_book(book)
@@ -160,5 +152,21 @@ class App
     puts '5 - Create a rental'
     puts '6 - List all rentals for a given person id'
     puts '7 - Exit'
+  end
+
+  def app_exit
+    puts 'Thank you for using the Library App!'
+  end
+
+  def app_loop
+    loop do
+      interface_menu
+      option = gets.chomp
+      if option == '7'
+        app_exit
+        break
+      end
+      option_selector(option)
+    end
   end
 end

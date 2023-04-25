@@ -15,7 +15,7 @@ puts student2.play_hooky
 
 puts math_class.students.map(&:name)
 
-book1 = Book.new('The Noob', 'John Doe')
+book1 = Book.new('The Noob', 2, 'John Doe')
 book2 = Book.new('Harry Pot', 'Joker Rowling')
 Rental.new('2020-10-21', book1, student1)
 Rental.new('2020-12-21', book2, student2)
