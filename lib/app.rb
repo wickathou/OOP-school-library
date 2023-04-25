@@ -16,19 +16,6 @@ class App
     app_loop
   end
 
-  def app_exit
-    puts 'Thank you for using the Library App!'
-  end
-
-  def app_loop
-    loop do
-      interface_menu
-      option = gets.chomp
-      option_selector(option)
-      break if option == '7'
-    end
-  end
-
   def list_books
     @books.each { |book| puts "#{book.title} by #{book.author}" }
   end
@@ -167,5 +154,18 @@ class App
     puts '5 - Create a rental'
     puts '6 - List all rentals for a given person id'
     puts '7 - Exit'
+  end
+
+  def app_exit
+    puts 'Thank you for using the Library App!'
+  end
+
+  def app_loop
+    loop do
+      interface_menu
+      option = gets.chomp
+      option_selector(option)
+      break if option == '7'
+    end
   end
 end
