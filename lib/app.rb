@@ -13,14 +13,19 @@ class App
 
   def run
     puts 'Welcome to School Library App!'
+    app_loop
+  end
+
+  def app_exit
+    puts 'Thank you for using the Library App!'
+  end
+
+  def app_loop
     loop do
       interface_menu
       option = gets.chomp
-      if option == '7'
-        puts 'Thank you for using the Library App!'
-        break
-      end
       option_selector(option)
+      break if option == '7'
     end
   end
 
@@ -146,6 +151,8 @@ class App
       create_rental
     when '6'
       list_rentals_person
+    when '7'
+      app_exit
     else
       puts 'That is not a valid input'
     end
