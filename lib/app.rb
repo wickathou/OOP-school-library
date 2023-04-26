@@ -19,24 +19,10 @@ class App
   end
 
   def list_books
-    if File.exist?('./data/books.json')
-      file = File.read('./data/books.json')
-      save = JSON.parse(file)
-      save.each { |book| puts "Title: #{book['title']}, Author: #{book['author']}" }
-    else
-      @books.each { |book| puts "#{book.title} by #{book.author}" }
-    end
+    @books.each { |book| puts "#{book.title} by #{book.author}" }
   end
 
   def list_people
-    save = []
-
-    if File.exist?('./data/people.json')
-      file = File.read('./data/people.json')
-      save = JSON.parse(file)
-      save.each { |person| puts "#{person['name']}-#{person['age']}" }
-    end
-
     @people.each { |person| puts "#{person.name} - #{person.age}" }
   end
 
@@ -177,7 +163,6 @@ class App
     SaveRentalDecorator.new(@rentals).save_routine
     SaveBookDecorator.new(@books).save_routine
     SavePersonDecorator.new(@people).save_routine
-
   end
 
   def app_exit

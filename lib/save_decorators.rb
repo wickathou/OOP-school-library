@@ -47,7 +47,7 @@ class SaveBookDecorator < SaveDecorator
     @instances.each do |instance|
       @hash[instance] = {
         title: instance.title,
-        author: instance.author,
+        author: instance.author
       }
     end
   end
@@ -62,7 +62,7 @@ class SavePersonDecorator < SaveDecorator
     @instances.each do |instance|
       @hash[instance] = {
         name: instance.name,
-        age: instance.age,      
+        age: instance.age
       }
     end
   end
