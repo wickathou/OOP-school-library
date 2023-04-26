@@ -3,6 +3,7 @@ require_relative 'teacher'
 require_relative 'book'
 require_relative 'rentals'
 require_relative 'classroom'
+require_relative 'person'
 
 class App
   def initialize
@@ -17,10 +18,24 @@ class App
   end
 
   def list_books
-    @books.each { |book| puts "#{book.title} by #{book.author}" }
+    if File.exist?('./data/books.json')
+      file = File.read('./data/books.json')
+      save = JSON.parse(file)
+      save.each { |book| puts "Title: #{book["title"]}, Author: #{book["author"]}"}
+    else
+      @books.each { |book| puts "#{book.title} by #{book.author}" }
+    end
   end
 
   def list_people
+    save = []
+
+    if File.exist?('./data/people.json')
+      file = File.read('./data/people.json')
+      save = JSON.parse(file)
+      save.each { |person| puts "#{person["name"]}-#{person["age"]}"}
+    end
+
     @people.each { |person| puts "#{person.name} - #{person.age}" }
   end
 
@@ -68,6 +83,19 @@ class App
     end
     student = Student.new(id, prompt_arr[1], prompt_arr[0], parent_permission)
     add_person(student)
+
+    savedStudents = []
+
+    if File.exist?('./data/people.json')
+      file = File.read('./data/people.json')
+      savedStudents = JSON.parse(file)
+    end
+    savedStudents << { id: teacher.id, name: teacher.name, age: teacher.age, specialization: teacher.specialization }
+    File.write('./data/people.json', JSON.generate(savedStudents))
+
+    puts 'Student created successfully'
+
+
   end
 
   def create_teacher
@@ -75,6 +103,17 @@ class App
     prompt_arr = input_prompt(%w[name age specialization])
     teacher = Teacher.new(id, prompt_arr[1], prompt_arr[0], prompt_arr[2])
     add_person(teacher)
+
+    savedTeachers = []
+
+    if File.exist?('./data/people.json')
+      file = File.read('./data/people.json')
+      savedTeachers = JSON.parse(file)
+    end
+    savedTeachers << { id: teacher.id, name: teacher.name, age: teacher.age, specialization: teacher.specialization }
+    File.write('./data/people.json', JSON.generate(savedTeachers))
+
+    puts 'Teacher created successfully'
   end
 
   def create_book
@@ -84,6 +123,17 @@ class App
     author = gets.chomp
     book = Book.new(title, author)
     add_book(book)
+
+    savedBooks = []
+
+    if File.exist?('./data/books.json')
+      file = File.read('./data/books.json')
+      savedBooks = JSON.parse(file)
+    end
+    savedBooks << { title: book.title, author: book.author }
+    File.write('./data/books.json', JSON.generate(savedBooks))
+
+    puts 'Book has been created successfully'
   end
 
   def create_rental
