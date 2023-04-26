@@ -1,5 +1,6 @@
 require_relative 'nameable'
 require_relative 'decorators'
+require 'json'
 
 class Person < Nameable
   attr_accessor :name, :age
