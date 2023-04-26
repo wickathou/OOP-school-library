@@ -1,7 +1,7 @@
 require_relative 'person'
 
 class Student < Person
-  attr_accessor :rentals, :classroom
+  attr_accessor :classroom
 
   def initialize(id, age, name, parent_permission, classroom = nil)
     super(id, age, name, parent_permission)
@@ -9,7 +9,6 @@ class Student < Person
       @classroom = classroom
       @classroom.students << self
     end
-    @rentals = []
     notify
   end
 

@@ -3,7 +3,7 @@ require_relative 'decorators'
 require 'json'
 
 class Person < Nameable
-  attr_accessor :name, :age
+  attr_accessor :name, :age, :rentals
   attr_reader :id
 
   def initialize(id, age, name = 'Unknown', parent_permission = nil)
@@ -11,6 +11,7 @@ class Person < Nameable
     @id = id
     @name = name
     @age = age
+    @rentals = []
     @parent_permission = if parent_permission.nil?
                            true
                          else
