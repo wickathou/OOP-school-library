@@ -3,7 +3,7 @@ require_relative 'teacher'
 require_relative 'book'
 require_relative 'rentals'
 require_relative 'classroom'
-require_relative 'saveDecorators'
+require_relative 'save_decorators'
 
 class App
   def initialize
