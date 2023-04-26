@@ -3,6 +3,7 @@ require_relative 'teacher'
 require_relative 'book'
 require_relative 'rentals'
 require_relative 'classroom'
+require_relative 'save_decorators'
 require_relative 'person'
 
 class App
@@ -83,13 +84,6 @@ class App
     end
     student = Student.new(id, prompt_arr[1], prompt_arr[0], parent_permission)
     add_person(student)
-    saved_students = []
-    if File.exist?('./data/people.json')
-      file = File.read('./data/people.json')
-      saved_students = JSON.parse(file)
-    end
-    saved_students << { id: teacher.id, name: teacher.name, age: teacher.age, specialization: teacher.specialization }
-    File.write('./data/people.json', JSON.generate(saved_students))
     puts 'Student created successfully'
   end
 
@@ -98,16 +92,6 @@ class App
     prompt_arr = input_prompt(%w[name age specialization])
     teacher = Teacher.new(id, prompt_arr[1], prompt_arr[0], prompt_arr[2])
     add_person(teacher)
-
-    saved_teachers = []
-
-    if File.exist?('./data/people.json')
-      file = File.read('./data/people.json')
-      saved_teachers = JSON.parse(file)
-    end
-    saved_teachers << { id: teacher.id, name: teacher.name, age: teacher.age, specialization: teacher.specialization }
-    File.write('./data/people.json', JSON.generate(saved_teachers))
-
     puts 'Teacher created successfully'
   end
 
@@ -118,16 +102,6 @@ class App
     author = gets.chomp
     book = Book.new(title, author)
     add_book(book)
-
-    saved_books = []
-
-    if File.exist?('./data/books.json')
-      file = File.read('./data/books.json')
-      saved_books = JSON.parse(file)
-    end
-    saved_books << { title: book.title, author: book.author }
-    File.write('./data/books.json', JSON.generate(saved_books))
-
     puts 'Book has been created successfully'
   end
 
@@ -199,7 +173,15 @@ class App
     puts '7 - Exit'
   end
 
+  def save_rentals
+    SaveRentalDecorator.new(@rentals).save_routine
+    SaveBookDecorator.new(@books).save_routine
+    SavePersonDecorator.new(@people).save_routine
+
+  end
+
   def app_exit
+    save_rentals
     puts 'Thank you for using the Library App!'
   end
 
