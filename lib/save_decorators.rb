@@ -22,7 +22,7 @@ class SaveDecorator
   end
 
   def save_json
-    File.write('./data/rentals.json', to_json)
+    raise NotImplementedError, 'method not implemented yet'
   end
 end
 
@@ -35,5 +35,9 @@ class SaveRentalDecorator < SaveDecorator
         person: instance.person.name
       }
     end
+  end
+
+  def save_json
+    File.write('./data/rentals.json', to_json)
   end
 end
