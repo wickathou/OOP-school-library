@@ -22,7 +22,7 @@ class SaveDecorator
   end
 
   def save_json
-    File.write('rentals.json', to_json)
+    File.write('./data/rentals.json', to_json)
   end
 end
 
