@@ -3,6 +3,7 @@ require_relative 'teacher'
 require_relative 'book'
 require_relative 'rentals'
 require_relative 'classroom'
+require_relative 'save_decorators'
 require_relative 'person'
 
 class App
@@ -199,7 +200,12 @@ class App
     puts '7 - Exit'
   end
 
+  def save_rentals
+    SaveRentalDecorator.new(@rentals).save_routine
+  end
+
   def app_exit
+    save_rentals
     puts 'Thank you for using the Library App!'
   end
 

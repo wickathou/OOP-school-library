@@ -4,6 +4,7 @@ AllCops:
     - "Guardfile"
     - "Rakefile"
     - "node_modules/**/*"
+    - "lib/sandbox/*"
 
   DisplayCopNames: true
 
