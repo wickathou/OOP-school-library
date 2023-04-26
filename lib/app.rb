@@ -21,7 +21,7 @@ class App
     if File.exist?('./data/books.json')
       file = File.read('./data/books.json')
       save = JSON.parse(file)
-      save.each { |book| puts "Title: #{book["title"]}, Author: #{book["author"]}"}
+      save.each { |book| puts "Title: #{book['title']}, Author: #{book['author']}" }
     else
       @books.each { |book| puts "#{book.title} by #{book.author}" }
     end
@@ -33,7 +33,7 @@ class App
     if File.exist?('./data/people.json')
       file = File.read('./data/people.json')
       save = JSON.parse(file)
-      save.each { |person| puts "#{person["name"]}-#{person["age"]}"}
+      save.each { |person| puts "#{person['name']}-#{person['age']}" }
     end
 
     @people.each { |person| puts "#{person.name} - #{person.age}" }
@@ -83,19 +83,14 @@ class App
     end
     student = Student.new(id, prompt_arr[1], prompt_arr[0], parent_permission)
     add_person(student)
-
-    savedStudents = []
-
+    saved_students = []
     if File.exist?('./data/people.json')
       file = File.read('./data/people.json')
-      savedStudents = JSON.parse(file)
+      saved_students = JSON.parse(file)
     end
-    savedStudents << { id: teacher.id, name: teacher.name, age: teacher.age, specialization: teacher.specialization }
-    File.write('./data/people.json', JSON.generate(savedStudents))
-
+    saved_students << { id: teacher.id, name: teacher.name, age: teacher.age, specialization: teacher.specialization }
+    File.write('./data/people.json', JSON.generate(saved_students))
     puts 'Student created successfully'
-
-
   end
 
   def create_teacher
@@ -104,14 +99,14 @@ class App
     teacher = Teacher.new(id, prompt_arr[1], prompt_arr[0], prompt_arr[2])
     add_person(teacher)
 
-    savedTeachers = []
+    saved_teachers = []
 
     if File.exist?('./data/people.json')
       file = File.read('./data/people.json')
-      savedTeachers = JSON.parse(file)
+      saved_teachers = JSON.parse(file)
     end
-    savedTeachers << { id: teacher.id, name: teacher.name, age: teacher.age, specialization: teacher.specialization }
-    File.write('./data/people.json', JSON.generate(savedTeachers))
+    saved_teachers << { id: teacher.id, name: teacher.name, age: teacher.age, specialization: teacher.specialization }
+    File.write('./data/people.json', JSON.generate(saved_teachers))
 
     puts 'Teacher created successfully'
   end
@@ -124,14 +119,14 @@ class App
     book = Book.new(title, author)
     add_book(book)
 
-    savedBooks = []
+    saved_books = []
 
     if File.exist?('./data/books.json')
       file = File.read('./data/books.json')
-      savedBooks = JSON.parse(file)
+      saved_books = JSON.parse(file)
     end
-    savedBooks << { title: book.title, author: book.author }
-    File.write('./data/books.json', JSON.generate(savedBooks))
+    saved_books << { title: book.title, author: book.author }
+    File.write('./data/books.json', JSON.generate(saved_books))
 
     puts 'Book has been created successfully'
   end
