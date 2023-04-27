@@ -1,5 +1,5 @@
 {
-  "#<Student:0x000055c10ca7c470>": {
+  "#<Student:0x000055bb14e46d38>": {
     "id": 0,
     "name": "etge",
     "age": "12",
@@ -9,13 +9,32 @@
       "classroom": null
     }
   },
-  "#<Teacher:0x000055c10ca6dad8>": {
+  "#<Teacher:0x000055bb14e46ae0>": {
     "id": 1,
     "name": "ergt",
     "age": "12",
     "type": "Teacher",
     "type_specific": {
       "specialization": "fdvdb"
+    }
+  },
+  "#<Student:0x000055bb14e3d698>": {
+    "id": 2,
+    "name": "jklhg",
+    "age": "123",
+    "type": "Student",
+    "type_specific": {
+      "parent_permission": true,
+      "classroom": null
+    }
+  },
+  "#<Teacher:0x000055bb14e3c270>": {
+    "id": 3,
+    "name": "kjhdg",
+    "age": "123",
+    "type": "Teacher",
+    "type_specific": {
+      "specialization": "fsg"
     }
   }
 }

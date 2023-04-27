@@ -5,8 +5,10 @@ require_relative 'rentals'
 require_relative 'classroom'
 require_relative 'save_decorators'
 require_relative 'person'
+require_relative 'utils'
 
 class App
+  include Utilities
   def initialize
     @books = []
     @people = []
@@ -107,30 +109,8 @@ class App
     SaveRentalDecorator.new(@rentals).load_data(@books, @people)
   end
 
-  def permission_checker
-    puts 'Has parent permission? [Y/N]?'
-    permission = gets.chomp
-    if permission.match?(/y/i)
-      parent_permission = true
-    elsif permission.match?(/n/i)
-      parent_permission = false
-    else
-      puts 'That is not a valid input'
-      return
-    end
-    parent_permission
-  end
-
   def add_person(person)
     @people << person
-  end
-
-  def input_prompt(arr)
-    (0..arr.length - 1).each do |i|
-      puts("#{arr.at(i)}:")
-      arr[i] = gets.chomp
-    end
-    arr
   end
 
   def add_book(book)
@@ -158,21 +138,6 @@ class App
     else
       puts 'That is not a valid input'
     end
-  end
-
-  def id_generator(arr)
-    id = arr.length
-  end
-
-  def interface_menu
-    puts 'Please choose an option by entering a number:'
-    puts '1 - List all books'
-    puts '2 - List all people'
-    puts '3 - Create a person'
-    puts '4 - Create a book'
-    puts '5 - Create a rental'
-    puts '6 - List all rentals for a given person id'
-    puts '7 - Exit'
   end
 
   def save_data

@@ -44,12 +44,14 @@ class SaveRentalDecorator < SaveDecorator
   end
 
   def load_data(books, people)
-    if File.exist?('./data/rentals.json')
-      file = File.read('./data/rentals.json')
-      saved_rentals = JSON.parse(file)
-      saved_rentals.each { |rental| @instances << Rental.new(rental[1]["date"], books[rental[1]["book_id"]] , people[rental[1]["person_id"]])}
-      puts "Rental history loaded from file"
+    return unless File.exist?('./data/rentals.json')
+
+    file = File.read('./data/rentals.json')
+    saved_rentals = JSON.parse(file)
+    saved_rentals.each do |rental|
+      @instances << Rental.new(rental[1]['date'], books[rental[1]['book_id']], people[rental[1]['person_id']])
     end
+    puts 'Rental history loaded from file'
   end
 end
 
@@ -69,12 +71,12 @@ class SaveBookDecorator < SaveDecorator
   end
 
   def load_data
-    if File.exist?('./data/books.json')
-      file = File.read('./data/books.json')
-      saved_books = JSON.parse(file)
-      saved_books.each { |book| @instances << Book.new(book[1]["id"], book[1]["title"], book[1]["author"])}
-      puts "Books loaded from file"
-    end
+    return unless File.exist?('./data/books.json')
+
+    file = File.read('./data/books.json')
+    saved_books = JSON.parse(file)
+    saved_books.each { |book| @instances << Book.new(book[1]['id'], book[1]['title'], book[1]['author']) }
+    puts 'Books loaded from file'
   end
 end
 
@@ -86,18 +88,17 @@ class SavePeopleDecorator < SaveDecorator
         name: instance.name,
         age: instance.age,
         type: instance.class,
-        type_specific: self.type_specific_generator(instance)
+        type_specific: type_specific_generator(instance)
       }
     end
   end
 
   def type_specific_generator(instance)
-    puts instance.class
     case instance.class.to_s
     when 'Teacher'
-      return teacher_type(instance)
+      teacher_type(instance)
     when 'Student'
-      return student_type(instance)
+      student_type(instance)
     else
       raise NotImplementedError, 'Instance class not implemented yet'
     end
@@ -121,20 +122,23 @@ class SavePeopleDecorator < SaveDecorator
   end
 
   def load_data
-    if File.exist?('./data/people.json')
-      file = File.read('./data/people.json')
-      saved_people = JSON.parse(file)
-      saved_people.each { |people| 
-      case people[1]["type"]
-        when "Teacher"
-          @instances << Teacher.new(people[1]["id"], people[1]["age"], people[1]["name"], people[1]["type_specific"]["specialization"])
-        when "Student"
-          @instances << Student.new(people[1]["id"], people[1]["age"], people[1]["name"], people[1]["type_specific"]["parent_permission"], people[1]["type_specific"]["classroom"])
-        else
-          raise NotImplementedError, 'Instance class not valid'
-        end
-        }
-      puts "People loaded from file"
+    return unless File.exist?('./data/people.json')
+
+    file = File.read('./data/people.json')
+    saved_people = JSON.parse(file)
+    saved_people.each do |people|
+      person = people[1]
+      case person['type']
+      when 'Teacher'
+        @instances << Teacher.new(person['id'], person['age'], person['name'],
+                                  person['type_specific']['specialization'])
+      when 'Student'
+        @instances << Student.new(person['id'], person['age'], person['name'],
+                                  person['type_specific']['parent_permission'], person['type_specific']['classroom'])
+      else
+        raise NotImplementedError, 'Instance class not valid'
+      end
     end
+    puts 'People loaded from file'
   end
 end

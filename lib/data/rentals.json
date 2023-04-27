@@ -1,9 +1,23 @@
 {
-  "#<Rental:0x000055c10ca66b48>": {
+  "#<Rental:0x000055bb14e45f28>": {
     "date": "123",
     "book_id": 0,
     "book": "wqrt",
     "person_id": 0,
     "person": "etge"
+  },
+  "#<Rental:0x000055bb14e37018>": {
+    "date": "123",
+    "book_id": 0,
+    "book": "wqrt",
+    "person_id": 3,
+    "person": "kjhdg"
+  },
+  "#<Rental:0x000055bb14e2ecd8>": {
+    "date": "123",
+    "book_id": 1,
+    "book": "kljh",
+    "person_id": 2,
+    "person": "jklhg"
   }
 }
