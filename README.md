@@ -51,11 +51,11 @@ Clone this repository to your desired folder:
   `git clone git@github.com:wickathou/OOP-school-library.git`
 
 ### Install
-bundle install
+`bundle install`
 ### Usage
 
 To run the project, use the command
-`main`
+`ruby main.rb`
 ### Run tests
 
 `rspec spec`
