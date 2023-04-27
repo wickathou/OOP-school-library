@@ -1,15 +1,17 @@
 require_relative 'nameable'
 require_relative 'decorators'
+require 'json'
 
 class Person < Nameable
-  attr_accessor :name, :age
-  attr_reader :id
+  attr_accessor :name, :age, :rentals
+  attr_reader :id, :parent_permission
 
   def initialize(id, age, name = 'Unknown', parent_permission = nil)
     super()
     @id = id
     @name = name
     @age = age
+    @rentals = []
     @parent_permission = if parent_permission.nil?
                            true
                          else

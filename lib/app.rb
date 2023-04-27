@@ -3,16 +3,20 @@ require_relative 'teacher'
 require_relative 'book'
 require_relative 'rentals'
 require_relative 'classroom'
+require_relative 'save_decorators'
+require_relative 'person'
+require_relative 'utils'
 
 class App
+  include Utilities
   def initialize
     @books = []
     @people = []
     @rentals = []
+    load_data
   end
 
   def run
-    puts 'Welcome to School Library App!'
     app_loop
   end
 
@@ -54,36 +58,31 @@ class App
   end
 
   def create_student
-    id = @people.length + 1
+    id = id_generator(@people)
     prompt_arr = input_prompt(%w[name age])
-    puts 'Has parent permission? [Y/N]?'
-    permission = gets.chomp
-    if permission.match?(/y/i)
-      parent_permission = true
-    elsif permission.match?(/n/i)
-      parent_permission = false
-    else
-      puts 'That is not a valid input'
-      return
-    end
+    parent_permission = permission_checker
     student = Student.new(id, prompt_arr[1], prompt_arr[0], parent_permission)
     add_person(student)
+    puts 'Student created successfully'
   end
 
   def create_teacher
-    id = @people.length + 1
+    id = id_generator(@people)
     prompt_arr = input_prompt(%w[name age specialization])
     teacher = Teacher.new(id, prompt_arr[1], prompt_arr[0], prompt_arr[2])
     add_person(teacher)
+    puts 'Teacher created successfully'
   end
 
   def create_book
+    id = id_generator(@books)
     puts 'Title:'
     title = gets.chomp
     puts 'Author:'
     author = gets.chomp
-    book = Book.new(title, author)
+    book = Book.new(id, title, author)
     add_book(book)
+    puts 'Book has been created successfully'
   end
 
   def create_rental
@@ -104,16 +103,14 @@ class App
 
   private
 
-  def add_person(person)
-    @people << person
+  def load_data
+    SaveBookDecorator.new(@books).load_data
+    SavePeopleDecorator.new(@people).load_data
+    SaveRentalDecorator.new(@rentals).load_data(@books, @people)
   end
 
-  def input_prompt(arr)
-    (0..arr.length - 1).each do |i|
-      puts("#{arr.at(i)}:")
-      arr[i] = gets.chomp
-    end
-    arr
+  def add_person(person)
+    @people << person
   end
 
   def add_book(book)
@@ -143,18 +140,14 @@ class App
     end
   end
 
-  def interface_menu
-    puts 'Please choose an option by entering a number:'
-    puts '1 - List all books'
-    puts '2 - List all people'
-    puts '3 - Create a person'
-    puts '4 - Create a book'
-    puts '5 - Create a rental'
-    puts '6 - List all rentals for a given person id'
-    puts '7 - Exit'
+  def save_data
+    SaveRentalDecorator.new(@rentals).save_routine
+    SaveBookDecorator.new(@books).save_routine
+    SavePeopleDecorator.new(@people).save_routine
   end
 
   def app_exit
+    save_data
     puts 'Thank you for using the Library App!'
   end
 

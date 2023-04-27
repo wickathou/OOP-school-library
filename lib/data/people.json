@@ -1,0 +1,40 @@
+{
+  "#<Student:0x000055876b0a6cc8>": {
+    "id": 0,
+    "name": "etge",
+    "age": "12",
+    "type": "Student",
+    "type_specific": {
+      "parent_permission": false,
+      "classroom": null
+    }
+  },
+  "#<Teacher:0x000055876b0a6980>": {
+    "id": 1,
+    "name": "ergt",
+    "age": "12",
+    "type": "Teacher",
+    "type_specific": {
+      "specialization": "fdvdb"
+    }
+  },
+  "#<Student:0x000055876b0a67c8>": {
+    "id": 2,
+    "name": "jklhg",
+    "age": "123",
+    "type": "Student",
+    "type_specific": {
+      "parent_permission": true,
+      "classroom": null
+    }
+  },
+  "#<Teacher:0x000055876b0a66b0>": {
+    "id": 3,
+    "name": "kjhdg",
+    "age": "123",
+    "type": "Teacher",
+    "type_specific": {
+      "specialization": "fsg"
+    }
+  }
+}

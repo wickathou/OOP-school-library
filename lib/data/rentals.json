@@ -1,0 +1,23 @@
+{
+  "#<Rental:0x000055876b09fd10>": {
+    "date": "123",
+    "book_id": 0,
+    "book": "wqrt",
+    "person_id": 0,
+    "person": "etge"
+  },
+  "#<Rental:0x000055876b09f810>": {
+    "date": "123",
+    "book_id": 0,
+    "book": "wqrt",
+    "person_id": 3,
+    "person": "kjhdg"
+  },
+  "#<Rental:0x000055876b09f6f8>": {
+    "date": "123",
+    "book_id": 1,
+    "book": "kljh",
+    "person_id": 2,
+    "person": "jklhg"
+  }
+}
