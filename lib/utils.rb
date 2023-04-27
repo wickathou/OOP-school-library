@@ -1,5 +1,4 @@
 module Utilities
-
   def interface_menu
     puts 'Please choose an option by entering a number:'
     puts '1 - List all books'
@@ -15,7 +14,6 @@ module Utilities
     arr.length
   end
 
-
   def input_prompt(arr)
     (0..arr.length - 1).each do |i|
       puts("#{arr.at(i)}:")
@@ -23,7 +21,6 @@ module Utilities
     end
     arr
   end
-
 
   def permission_checker
     puts 'Has parent permission? [Y/N]?'
@@ -38,5 +35,4 @@ module Utilities
     end
     parent_permission
   end
-  
 end
