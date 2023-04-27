@@ -4,7 +4,9 @@ AllCops:
     - "Guardfile"
     - "Rakefile"
     - "node_modules/**/*"
+    # Excluded as these folders contain testing files and output files
     - "lib/sandbox/*"
+    - "lib/data/*"
 
   DisplayCopNames: true
 
