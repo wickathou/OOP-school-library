@@ -5,7 +5,7 @@ class Student < Person
 
   def initialize(id, age, name, parent_permission, classroom = nil)
     super(id, age, name, parent_permission)
-    unless classroom.nil?
+    unless classroom.nil? || classroom == 'null'
       @classroom = classroom
       @classroom.students << self
     end
