@@ -1,0 +1,42 @@
+{
+  "#<Person:0x0000563454b98e10>": {
+    "id": 0,
+    "name": "John Doe",
+    "age": 17,
+    "type": "Person",
+    "type_specific": {
+    }
+  },
+  "#<Person:0x0000563454b98938>": {
+    "id": 1,
+    "name": "John Doe",
+    "age": 17,
+    "type": "Person",
+    "type_specific": {
+    }
+  },
+  "#<Person:0x0000563454b98258>": {
+    "id": 2,
+    "name": "John Doe",
+    "age": 17,
+    "type": "Person",
+    "type_specific": {
+    }
+  },
+  "#<Person:0x0000563454b779b8>": {
+    "id": 3,
+    "name": "John Doe",
+    "age": 17,
+    "type": "Person",
+    "type_specific": {
+    }
+  },
+  "#<Person:0x0000563454b76798>": {
+    "id": 4,
+    "name": "John Doe",
+    "age": 17,
+    "type": "Person",
+    "type_specific": {
+    }
+  }
+}

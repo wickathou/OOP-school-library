@@ -1,0 +1,37 @@
+{
+  "#<Rental:0x0000563454b21fb8>": {
+    "date": 0,
+    "book_id": 0,
+    "book": "1984",
+    "person_id": 0,
+    "person": "John Doe"
+  },
+  "#<Rental:0x0000563454b21f90>": {
+    "date": 1,
+    "book_id": 0,
+    "book": "1984",
+    "person_id": 0,
+    "person": "John Doe"
+  },
+  "#<Rental:0x0000563454b21f68>": {
+    "date": 2,
+    "book_id": 0,
+    "book": "1984",
+    "person_id": 0,
+    "person": "John Doe"
+  },
+  "#<Rental:0x0000563454b21f18>": {
+    "date": 3,
+    "book_id": 0,
+    "book": "1984",
+    "person_id": 0,
+    "person": "John Doe"
+  },
+  "#<Rental:0x0000563454b21ef0>": {
+    "date": 4,
+    "book_id": 0,
+    "book": "1984",
+    "person_id": 0,
+    "person": "John Doe"
+  }
+}

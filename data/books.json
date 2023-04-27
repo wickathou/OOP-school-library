@@ -1,0 +1,27 @@
+{
+  "#<Book:0x0000563454bb2388>": {
+    "id": 0,
+    "title": "1984",
+    "author": "George Orwell"
+  },
+  "#<Book:0x0000563454bb1ff0>": {
+    "id": 1,
+    "title": "1984",
+    "author": "George Orwell"
+  },
+  "#<Book:0x0000563454bb1a00>": {
+    "id": 2,
+    "title": "1984",
+    "author": "George Orwell"
+  },
+  "#<Book:0x0000563454bb1410>": {
+    "id": 3,
+    "title": "1984",
+    "author": "George Orwell"
+  },
+  "#<Book:0x0000563454bb0ee8>": {
+    "id": 4,
+    "title": "1984",
+    "author": "George Orwell"
+  }
+}
