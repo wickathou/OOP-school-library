@@ -11,7 +11,7 @@
     - [Usage](#usage)
     - [Run tests](#run-tests)
   - [👤 Authors ](#-authors-)
-  - [✅ Current Features ](#-current-features-)
+  - [✅ Key Features ](#-key-features-)
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
   - [⭐️ Show your support ](#️-show-your-support-)
@@ -78,7 +78,7 @@ To run the project, use the command
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## ✅ Current Features <a name="current-features"></a>
+## ✅ Key Features <a name="current-features"></a>
 
 - [Done] **[Class builders]**
 - [Done] **[Separate files for each class]**
