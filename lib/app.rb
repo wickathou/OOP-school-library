@@ -11,10 +11,10 @@ class App
     @books = []
     @people = []
     @rentals = []
+    load_data
   end
 
   def run
-    puts 'Welcome to School Library App!'
     app_loop
   end
 
@@ -56,25 +56,16 @@ class App
   end
 
   def create_student
-    id = @people.length + 1
+    id = id_generator(@people)
     prompt_arr = input_prompt(%w[name age])
-    puts 'Has parent permission? [Y/N]?'
-    permission = gets.chomp
-    if permission.match?(/y/i)
-      parent_permission = true
-    elsif permission.match?(/n/i)
-      parent_permission = false
-    else
-      puts 'That is not a valid input'
-      return
-    end
+    parent_permission = permission_checker
     student = Student.new(id, prompt_arr[1], prompt_arr[0], parent_permission)
     add_person(student)
     puts 'Student created successfully'
   end
 
   def create_teacher
-    id = @people.length + 1
+    id = id_generator(@people)
     prompt_arr = input_prompt(%w[name age specialization])
     teacher = Teacher.new(id, prompt_arr[1], prompt_arr[0], prompt_arr[2])
     add_person(teacher)
@@ -82,11 +73,12 @@ class App
   end
 
   def create_book
+    id = id_generator(@books)
     puts 'Title:'
     title = gets.chomp
     puts 'Author:'
     author = gets.chomp
-    book = Book.new(title, author)
+    book = Book.new(id, title, author)
     add_book(book)
     puts 'Book has been created successfully'
   end
@@ -108,6 +100,26 @@ class App
   end
 
   private
+
+  def load_data
+    SaveBookDecorator.new(@books).load_data
+    SavePeopleDecorator.new(@people).load_data
+    SaveRentalDecorator.new(@rentals).load_data(@books, @people)
+  end
+
+  def permission_checker
+    puts 'Has parent permission? [Y/N]?'
+    permission = gets.chomp
+    if permission.match?(/y/i)
+      parent_permission = true
+    elsif permission.match?(/n/i)
+      parent_permission = false
+    else
+      puts 'That is not a valid input'
+      return
+    end
+    parent_permission
+  end
 
   def add_person(person)
     @people << person
@@ -148,6 +160,10 @@ class App
     end
   end
 
+  def id_generator(arr)
+    id = arr.length
+  end
+
   def interface_menu
     puts 'Please choose an option by entering a number:'
     puts '1 - List all books'
@@ -159,14 +175,14 @@ class App
     puts '7 - Exit'
   end
 
-  def save_rentals
+  def save_data
     SaveRentalDecorator.new(@rentals).save_routine
     SaveBookDecorator.new(@books).save_routine
-    SavePersonDecorator.new(@people).save_routine
+    SavePeopleDecorator.new(@people).save_routine
   end
 
   def app_exit
-    save_rentals
+    save_data
     puts 'Thank you for using the Library App!'
   end
 

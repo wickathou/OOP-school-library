@@ -1,2 +1,9 @@
 {
+  "#<Rental:0x000055c10ca66b48>": {
+    "date": "123",
+    "book_id": 0,
+    "book": "wqrt",
+    "person_id": 0,
+    "person": "etge"
+  }
 }

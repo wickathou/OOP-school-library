@@ -1,2 +1,21 @@
 {
+  "#<Student:0x000055c10ca7c470>": {
+    "id": 0,
+    "name": "etge",
+    "age": "12",
+    "type": "Student",
+    "type_specific": {
+      "parent_permission": false,
+      "classroom": null
+    }
+  },
+  "#<Teacher:0x000055c10ca6dad8>": {
+    "id": 1,
+    "name": "ergt",
+    "age": "12",
+    "type": "Teacher",
+    "type_specific": {
+      "specialization": "fdvdb"
+    }
+  }
 }
