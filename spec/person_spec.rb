@@ -1,28 +1,30 @@
 describe Person do
-  context 'create a person' do
-    person = Person.new('Microverse', 27)
-
-    it ' show age' do
-      expect(person.age).to eq 27
+  context 'creating a person' do
+    before(:each) do
+      @person = Person.new(1, 27, 'Microverse')
     end
 
-    it 'show name' do
-      expect(person.name).to eq 'Microverse'
+    it 'returns the person age' do
+      expect(@person.age).to eq 27
     end
 
-    it 'when the person does not have parent permission' do
-      person = Person.new('James', 16, parent_permission: false)
-      expect(person.can_use_services?).to eq(false)
+    it 'returns the person name' do
+      expect(@person.name).to eq 'Microverse'
     end
 
-    it 'when the person does not have parent permission but returns true if the person is above 18' do
-      person = Person.new('James', 21, parent_permission: false)
-      expect(person.can_use_services?).to eq(true)
+    it 'returns false when the person does not have parent permission and is underage' do
+      person = Person.new(2, 18, 'James', parent_permission: true)
+      expect(person.can_use_services?).to eq true
     end
 
-    it 'when the person  have parent permission' do
-      person = Person.new('James', 26, parent_permission: true)
-      expect(person.can_use_services?).to eq(true)
+    it 'returns true when the person does not have parent permission and is of age' do
+      person = Person.new(3, 21, 'James', parent_permission: false)
+      expect(person.can_use_services?).to eq true
+    end
+
+    it 'returns true when the person has parent permission' do
+      person = Person.new(4, 26, 'James', parent_permission: true)
+      expect(person.can_use_services?).to eq true
     end
   end
 end
