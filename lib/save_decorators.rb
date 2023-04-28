@@ -99,6 +99,8 @@ class SavePeopleDecorator < SaveDecorator
       teacher_type(instance)
     when 'Student'
       student_type(instance)
+    when 'Person'
+      {}
     else
       raise NotImplementedError, 'Instance class not implemented yet'
     end
@@ -135,6 +137,8 @@ class SavePeopleDecorator < SaveDecorator
       when 'Student'
         @instances << Student.new(person['id'], person['age'], person['name'],
                                   person['type_specific']['parent_permission'], person['type_specific']['classroom'])
+      when 'Person'
+        @instances << Person.new(person['id'], person['age'], person['name'])
       else
         raise NotImplementedError, 'Instance class not valid'
       end

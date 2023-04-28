@@ -54,13 +54,15 @@ Clone this repository to your desired folder:
 `bundle install`
 ### Usage
 
+**IMPORTANT**
 First, cd into the lib folder
 `cd lib/`
-
 To run the project, use the command
 `ruby main`
+
 ### Run tests
 
+Run the command from the **root directory only**
 `rspec spec`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
