@@ -1,5 +1,3 @@
-require './student'
-
 describe Student do
   context 'create a student' do
     student = Student.new('Chukwuemeka', 48, 'ENG121', parent_permission: true)
