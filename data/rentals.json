@@ -1,33 +1,33 @@
 {
-  "#<Rental:0x00007f9035786be0>": {
+  "#<Rental:0x000055fd7e8f0e90>": {
     "date": 0,
     "book_id": 0,
     "book": "1984",
     "person_id": 0,
     "person": "John Doe"
   },
-  "#<Rental:0x00007f9035786bb8>": {
+  "#<Rental:0x000055fd7e8f0e68>": {
     "date": 1,
     "book_id": 0,
     "book": "1984",
     "person_id": 0,
     "person": "John Doe"
   },
-  "#<Rental:0x00007f9035786b90>": {
+  "#<Rental:0x000055fd7e8f0e40>": {
     "date": 2,
     "book_id": 0,
     "book": "1984",
     "person_id": 0,
     "person": "John Doe"
   },
-  "#<Rental:0x00007f9035786b68>": {
+  "#<Rental:0x000055fd7e8f0e18>": {
     "date": 3,
     "book_id": 0,
     "book": "1984",
     "person_id": 0,
     "person": "John Doe"
   },
-  "#<Rental:0x00007f9035786b40>": {
+  "#<Rental:0x000055fd7e8f0d28>": {
     "date": 4,
     "book_id": 0,
     "book": "1984",
